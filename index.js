@@ -1,5 +1,6 @@
 const inquirer = require('inquirer')
-const fs = require('fs')
+const fs = require('fs');
+// const generateMarkdown = require('./utils/generateMarkdown');
 // TODO: Include packages needed for this application
 
 // TODO: Create an array of questions for user input
@@ -7,48 +8,48 @@ const questions = [
     {
         type: 'input',
         name: 'gitHub',
-        message: 'github username?'
+        message: 'What is your Github username?'
     },
     {
         type: 'input',
         name: 'email',
-        message: 'email'
+        message: 'What is your eMail'
     },
     {
         type: 'input',
         name: 'title',
-        message: 'title?'
+        message: 'What is the name of your app?'
     },
     {
         type: 'input',
         name: 'description',
-        message: 'description?'
+        message: 'Please describe your application.'
     },
     {
         type: 'list',
         name: 'license',
-        message: 'license?',
-        choices: ["one", "two"],
+        message: 'Did you use one of the following licenses?',
+        choices: ["Apache", "Mit", "Unlicense"],
     },
     {
         type: 'input',
         name: 'install',
-        message: 'install guide?'
+        message: 'Please provide an installation guide:'
     },
     {
         type: 'input',
         name: 'testing',
-        message: 'testing?'
+        message: 'How did testing go?'
     },
     {
         type: 'input',
         name: 'usage',
-        message: 'usage?'
+        message: 'What is the intended use of the website?'
     },
     {
         type: 'input',
-        name: 'contributors',
-        message: 'contributors?'
+        name: 'refs',
+        message: 'Please provide credit from any collaborators on this app:'
     },
 
 ];
@@ -56,16 +57,17 @@ const questions = [
 // TODO: Create a function to write README file
 function writeToFile(fileName, data) {
     console.log(fileName, data) 
-    fs.writeFile(fileName, data.gitHub,  (err) =>
+    fs.writeFile(fileName, data.gitHub, (err) =>
+    // pass a string thru the data array?
     err ? console.log(err) : console.log('Successfully created readMe.md!'))
 }
 
 // TODO: Create a function to initialize app
 function init() {
-    inquirer.prompt(questions)
+    inquirer.prompt(questions) 
     .then(answers => {
-        console.table(answers)
-        writeToFile('readMe.md', answers)
+        // console.table(data.gitHub)
+        writeToFile(fileName, data)
     })
 }
 

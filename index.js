@@ -57,7 +57,7 @@ const questions = [
 // TODO: Create a function to write README file
 function writeToFile(fileName, data) {
     console.log(fileName, data) 
-    fs.writeFile(fileName, data.gitHub, (err) =>
+    fs.writeFile(fileName,` # Github: ${data.gitHub} \n# Email: ${data.email} \n # Project Title ${data.title} \n # Description ${data.description} \n# License ${data.license} \n# Installation instructions:${data.install} \n# Testing: ${data.testing} \n# Usage: ${data.usage} \n# References: ${data.refs} \n`, (err) =>
     // pass a string thru the data array?
     err ? console.log(err) : console.log('Successfully created readMe.md!'))
 }
@@ -67,7 +67,7 @@ function init() {
     inquirer.prompt(questions) 
     .then(answers => {
         // console.table(data.gitHub)
-        writeToFile(fileName, data)
+        writeToFile("readme.md", answers)
     })
 }
 
